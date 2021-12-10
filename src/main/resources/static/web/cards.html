@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/cash-coin.svg"/>
+    <link rel="stylesheet" href="./styles/cards.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'>
+    <title>Tus Cuentas</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Nav -->
+        <div class="header sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-dark" id="navTop">
+                <div class="container px-5">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="#!"><span id="logo">BVGB</span></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="#!">Mis gestiones</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Atención al cliente</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link navbar-brand" href=""><span>Salir</span></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark" id="navBottom">
+                <div class="container px-5">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="./accounts.html">Cuentas</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#!">Tarjetas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./transfers.html">Transferencias</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./loan-application.html">Préstamos</a></li>
+                        </ul>
+                        <a v-on:click.prevent="logOut" class="text-light fw-normal fs-5" href="#">
+                            <span class="exit">Salir</span>
+                            <img class="exitImg" src="./assets/exit.png" alt="exit">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container px-4 px-lg-5" id="bodyCard">
+            <div id="btnCrate" class="card  d-flex justify-content-center align-items-center flex-column">
+                <div>
+                    <a class="btn btn-dark" href="./create-cards.html">Solicitar una tarjeta!</a>
+                </div>
+            </div>
+            <div class="tarjetas d-flex justify-content-center">
+                <div class="tarjetas"><!-- class="row gx-4 gx-lg-5" -->
+                    <div v-if="debitCards.length > 0" v-for="card in debitCards">
+                        <div class="wrapper">
+                            <div v-bind:class="[card.color=='GOLD'?'cards-gold':card.color=='TITANIUM'?'cards-titanium':card.color=='SILVER'?'cards-silver':'other']">
+                                <div class="face">
+                                    <div class="head">
+                                        <div class="title">{{card.type}} {{card.color}}</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="card__logo" width="70" height="20" viewBox="0 0 175.7 53.9">
+                                            <style>
+                                                .visa {
+                                                    fill: #fff;
+                                                }
+                                            </style>
+                                            <path class="visa" d="M61.9 53.1l8.9-52.2h14.2l-8.9 52.2zm65.8-50.9c-2.8-1.1-7.2-2.2-12.7-2.2-14.1 0-24 7.1-24 17.2-.1 7.5 7.1 11.7 12.5 14.2 5.5 2.6 7.4 4.2 7.4 6.5 0 3.5-4.4 5.1-8.5 5.1-5.7 0-8.7-.8-13.4-2.7l-2-.9-2 11.7c3.3 1.5 9.5 2.7 15.9 2.8 15 0 24.7-7 24.8-17.8.1-5.9-3.7-10.5-11.9-14.2-5-2.4-8-4-8-6.5 0-2.2 2.6-4.5 8.1-4.5 4.7-.1 8 .9 10.6 2l1.3.6 1.9-11.3M164.2 1h-11c-3.4 0-6 .9-7.5 4.3l-21.1 47.8h14.9s2.4-6.4 3-7.8h18.2c.4 1.8 1.7 7.8 1.7 7.8h13.2l-11.4-52.1m-17.5 33.6c1.2-3 5.7-14.6 5.7-14.6-.1.1 1.2-3 1.9-5l1 4.5s2.7 12.5 3.3 15.1h-11.9zm-96.7-33.7l-14 35.6-1.5-7.2c-2.5-8.3-10.6-17.4-19.6-21.9l12.7 45.7h15.1l22.4-52.2h-15.1"
+                                            />
+                                            <path fill="#F7A600" d="M23.1.9h-22.9l-.2 1.1c17.9 4.3 29.7 14.8 34.6 27.3l-5-24c-.9-3.3-3.4-4.3-6.5-4.4"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="main">
+                                        <div class="number-title">{{client.firstName}} {{client.lastName}}</div>
+                                        <div class="number">{{card.number}}</div>
+                                    </div>
+                                    <div class="dates">
+                                        <!-- <div><p>VALID DATES:</p></div> -->
+                                        <div class="start">{{moment(card.fromDate).format('MM/YY')}}</div>
+                                        <div class="end">{{moment(card.thruDate).format('MM/YY')}}</div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="magnetic-line">
+                                    </div>
+                                    <div class="cvv">CVV: {{card.cvv}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjetas">
+                    <div v-if="creditCards.length > 0" v-for="card in creditCards">
+                        <div class="wrapper">
+                            <div v-bind:class="[card.color=='GOLD'?'cards-gold':card.color=='TITANIUM'?'cards-titanium':card.color=='SILVER'?'cards-silver':'other']">
+                                <div class="face">
+                                    <div class="head">
+                                        <div class="title">{{card.type}} {{card.color}}</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="card__logo" width="70" height="20" viewBox="0 0 175.7 53.9">
+                                            <style>
+                                                .visa {
+                                                    fill: #fff;
+                                                }
+                                            </style>
+                                            <path class="visa" d="M61.9 53.1l8.9-52.2h14.2l-8.9 52.2zm65.8-50.9c-2.8-1.1-7.2-2.2-12.7-2.2-14.1 0-24 7.1-24 17.2-.1 7.5 7.1 11.7 12.5 14.2 5.5 2.6 7.4 4.2 7.4 6.5 0 3.5-4.4 5.1-8.5 5.1-5.7 0-8.7-.8-13.4-2.7l-2-.9-2 11.7c3.3 1.5 9.5 2.7 15.9 2.8 15 0 24.7-7 24.8-17.8.1-5.9-3.7-10.5-11.9-14.2-5-2.4-8-4-8-6.5 0-2.2 2.6-4.5 8.1-4.5 4.7-.1 8 .9 10.6 2l1.3.6 1.9-11.3M164.2 1h-11c-3.4 0-6 .9-7.5 4.3l-21.1 47.8h14.9s2.4-6.4 3-7.8h18.2c.4 1.8 1.7 7.8 1.7 7.8h13.2l-11.4-52.1m-17.5 33.6c1.2-3 5.7-14.6 5.7-14.6-.1.1 1.2-3 1.9-5l1 4.5s2.7 12.5 3.3 15.1h-11.9zm-96.7-33.7l-14 35.6-1.5-7.2c-2.5-8.3-10.6-17.4-19.6-21.9l12.7 45.7h15.1l22.4-52.2h-15.1"
+                                            />
+                                            <path fill="#F7A600" d="M23.1.9h-22.9l-.2 1.1c17.9 4.3 29.7 14.8 34.6 27.3l-5-24c-.9-3.3-3.4-4.3-6.5-4.4"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="main">
+                                        <div class="number-title">{{client.firstName}} {{client.lastName}}</div>
+                                        <div class="number">{{card.number}}</div>
+                                    </div>
+                                    <div class="dates">
+                                        <!-- <div><p>VALID DATES:</p></div> -->
+                                        <div class="start">{{moment(card.fromDate).format('MM/YY')}}</div>
+                                        <div class="end">{{moment(card.thruDate).format('MM/YY')}}</div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="magnetic-line">
+                                    </div>
+                                    <div class="cvv">CVV: {{card.cvv}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-4" id="footer">
+        <p class="m-0 text-center text-white">Copyright &copy; BVGB 2021</p></div>
+    </footer>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script> -->
+    <script src="./scripts/cards.js"></script>
+</body>
+</html>

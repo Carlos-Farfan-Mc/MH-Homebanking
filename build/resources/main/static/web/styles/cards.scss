@@ -1,0 +1,360 @@
+$animation-speed: 1s;
+$background-color-gold: #ffd700;
+$background-color-titanium: #999798;//#a5adaf
+$background-color-silver: #cdcdcd;//#a5adaf
+$card-color-gold: darken($background-color-gold, 15);
+$card-color-titanium: darken($background-color-titanium, 15);
+$card-color-silver: darken($background-color-silver, 15);
+$card-height: 170px;
+$card-width: $card-height * 1.7;
+// $background-color: #fff;
+// $card-color: darken($background-color, 45);
+
+html * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+#app{
+    background: #dfecfa;
+}
+
+#logo{
+    font-size: 1.5rem;
+}
+
+#navTop {
+    background: #122842;
+}
+#navBottom {
+  background: #043564;
+}
+
+.header {
+    height: 16vh;
+    border: none;
+}
+
+.exit {
+    color: #07b9b9be;
+    margin-right: .3rem;
+}
+
+#bodyCard {
+    background: #bbddddbe;
+    // width: 80vw;
+    min-height: 74vh;
+    border: solid #bbddddbe;
+}
+
+.tarjetas {
+    margin-left: 3rem;
+    flex-wrap: wrap;
+}
+
+#btnCrate {
+    background: #dfecfa;
+    height: 3rem;
+    margin-top: .3rem;
+}
+
+a.btn {
+  background: #07b9b9be;
+  border: none;
+}
+
+#millasEx {
+  background: #122842;
+}
+
+img.exitImg {
+    width: 30px;
+}
+
+button.btn.btn-link.collapsed i {
+    transform: rotate(0deg);
+}
+
+button.btn.btn-link i {
+    transform: rotate(180deg);
+    transition: 0.5s;
+}  
+#footer{
+    background:linear-gradient(to right, #150e53,#3d54bb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+// -----//
+.wrapper {
+    margin: 3.5rem 0 0rem 0rem;
+    margin-left: 1rem;
+    // background: red;
+    height: 12.5rem;
+    width: 25rem;
+    perspective: 18.75rem;
+}
+
+.card-gold {
+    background: linear-gradient($card-color-gold, darken($card-color-gold, 10));
+    box-shadow: 0px 0px 30px 0px rgba(#000, 0.3);
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: $card-height;
+    width: $card-width;
+}
+
+.card-titanium {
+    background: linear-gradient($card-color-titanium, darken($card-color-titanium, 10));
+    box-shadow: 0px 0px 30px 0px rgba(#000, 0.3);
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: $card-height;
+    width: $card-width;
+}
+
+.card-silver {
+    background: linear-gradient($card-color-silver, darken($card-color-silver, 10));
+    box-shadow: 0px 0px 30px 0px rgba(#000, 0.3);
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: $card-height;
+    width: $card-width;
+}
+
+.cards-gold {
+    .face {
+        @extend .card-gold;
+        .head {
+            display: flex;
+            justify-content: space-between;
+            margin: 16px 16px 0 16px;
+            .title {
+                font-weight: 600;
+                font-size: 15px;
+            }
+        }
+        .main {
+            margin: 16px 16px 0 16px;
+            .number-title {
+                font-size: 17px;
+                color: darken(#fff, 20);
+            }
+            .number {
+                font-size: 20px;
+            }
+        }
+        .dates {
+            display: flex;
+            max-width: 100px;
+            justify-content: space-between;
+            margin: 16px 16px 16px 16px;
+            .start {}
+            .end {}
+        }
+    }
+    .back {
+        animation: demo ($animation-speed + 2) ease-in-out;
+        transform: translateX(0) translateY(0);
+        transition: transform $animation-speed;
+        background: linear-gradient(darken($card-color-gold, 4), darken($card-color-gold, 14));
+        @extend .card-gold;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        .magnetic-line {
+            background: #000;
+            margin-top: 16px;
+            height: 32px;
+            width: 100%;
+        }
+        .cvv {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(#fff, 0.5);
+            border-radius: 4px;
+            margin: 0 25px ($card-height / 3) 25px;
+            text-align: end;
+            padding-right: 8px;
+            width: $card-width / 1.3 + 9;
+            height: 24px;
+        }
+    }
+}
+
+.cards-gold:hover {
+    .back {
+        transform: translateX($card-width / 3) translateY(-50px);
+        transition: transform $animation-speed;
+    }
+}
+
+.cards-titanium {
+    .face {
+        @extend .card-titanium;
+        .head {
+            display: flex;
+            justify-content: space-between;
+            margin: 16px 16px 0 16px;
+            .title {
+                font-weight: 600;
+                font-size: 15px;
+            }
+        }
+        .main {
+            margin: 16px 16px 0 16px;
+            .number-title {
+                font-size: 17px;
+                color: darken(#fff, 20);
+            }
+            .number {
+                font-size: 20px;
+            }
+        }
+        .dates {
+            display: flex;
+            max-width: 100px;
+            justify-content: space-between;
+            margin: 16px 16px 16px 16px;
+            .start {}
+            .end {}
+        }
+    }
+    .back {
+        animation: demo ($animation-speed + 2) ease-in-out;
+        transform: translateX(0) translateY(0);
+        transition: transform $animation-speed;
+        background: linear-gradient(darken($card-color-titanium, 4), darken($card-color-titanium, 14));
+        @extend .card-titanium;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        .magnetic-line {
+            background: #000;
+            margin-top: 16px;
+            height: 32px;
+            width: 100%;
+        }
+        .cvv {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(#fff, 0.5);
+            border-radius: 4px;
+            margin: 0 25px ($card-height / 3) 25px;
+            text-align: end;
+            padding-right: 8px;
+            width: $card-width / 1.3 + 9;
+            height: 24px;
+        }
+    }
+}
+
+.cards-titanium:hover {
+    .back {
+        transform: translateX($card-width / 3) translateY(-50px);
+        transition: transform $animation-speed;
+    }
+}
+
+.cards-silver {
+    .face {
+        @extend .card-silver;
+        .head {
+            display: flex;
+            justify-content: space-between;
+            margin: 16px 16px 0 16px;
+            .title {
+                font-weight: 600;
+                font-size: 15px;
+            }
+        }
+        .main {
+            margin: 16px 16px 0 16px;
+            .number-title {
+                font-size: 17px;
+                color: darken(#fff, 20);
+            }
+            .number {
+                font-size: 20px;
+            }
+        }
+        .dates {
+            display: flex;
+            max-width: 100px;
+            justify-content: space-between;
+            margin: 16px 16px 16px 16px;
+            .start {}
+            .end {}
+        }
+    }
+    .back {
+        animation: demo ($animation-speed + 2) ease-in-out;
+        transform: translateX(0) translateY(0);
+        transition: transform $animation-speed;
+        background: linear-gradient(darken($card-color-silver, 4), darken($card-color-silver, 14));
+        @extend .card-silver;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        .magnetic-line {
+            background: #000;
+            margin-top: 16px;
+            height: 32px;
+            width: 100%;
+        }
+        .cvv {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(#fff, 0.5);
+            border-radius: 4px;
+            margin: 0 25px ($card-height / 3) 25px;
+            text-align: end;
+            padding-right: 8px;
+            width: $card-width / 1.3 + 9;
+            height: 24px;
+        }
+    }
+}
+
+.cards-silver:hover {
+    .back {
+        transform: translateX($card-width / 3) translateY(-50px);
+        transition: transform $animation-speed;
+    }
+}
+
+@keyframes demo {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX($card-width / 3) translateY(-50px);
+    }
+    75% {
+        transform: translateX($card-width / 3) translateY(-50px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}

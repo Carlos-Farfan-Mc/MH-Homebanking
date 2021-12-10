@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.bodyImg {
+    background-image: url("../assets/financial-institutions.jpg");
+    background-color: #152733;
+    /* background-position: center; */
+    background-size: cover;
+}
+
+.checkRegister {
+    color: white;
+}
+
+.form-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vw; */
+    height: 100vh;
+}
+
+.form-content {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    padding: 5px;
+}
+
+.form-items {
+    border: 3px solid #fff;
+    padding: 15px;
+    width: 35vw;
+    min-width: 310px;
+    border-radius: 10px;
+    text-align: left;
+    transition: all 0.4s ease;
+    background-color: #8ec3e7d5;
+}
+
+.form-content h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-content p {
+    color: #fff;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 15px;
+}
+
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    width: 100%;
+    padding: 9px 20px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}

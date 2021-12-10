@@ -1,0 +1,141 @@
+/* ----------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+
+.exit {
+  color: #07b9b9be;
+  margin-right: .3rem;
+}
+
+#app {
+  background: #dfecfa;
+}
+
+#logo {
+  font-size: 1.5rem;
+}
+
+#navTop {
+  background: #122842;
+}
+
+#navBottom {
+  background: #043564;
+}
+
+.header {
+  height: 16vh;
+  border: none;
+}
+
+/* #bodyCard {
+  background: #bbddddbe;
+  height: 74vh;
+} */
+
+button.btn {
+  background: #07b9b9be;
+  border: none;
+  margin: 10px 0 10px 0;
+}
+
+#millasEx {
+  background: #122842;
+}
+
+img.exitImg {
+  width: 30px;
+}
+
+.form-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100vw; */
+  height: 74vh;
+}
+
+.form-content {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+
+.form-items {
+  border: 3px solid #fff;
+  padding: 10px;
+  width: 38vw;
+  min-width: 310px;
+  border-radius: 10px;
+  text-align: left;
+  transition: all 0.4s ease;
+  background-color: #8ec3e7d5;
+}
+
+#footer {
+  background: linear-gradient(to right, #150e53, #3d54bb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.form-content h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-content p {
+    color: #fff;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.form-content input[type=text] {
+  width: 100%;
+  padding: 9px 20px;
+  text-align: left;
+  border: 0;
+  outline: 0;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  color: #8D8D8D;
+  transition: all 0.3s ease;
+  margin: 10px 0 10px 0;
+}
+
+.form-content select {
+  width: 100%;
+  padding: 9px 20px;
+  text-align: left;
+  border: 0;
+  outline: 0;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  color: #8D8D8D;
+  transition: all 0.3s ease;
+  margin: 10px 0 10px 0;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/cash-coin.svg"/>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'>
+    <title>Tus Cuentas</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Nav -->
+        <div class="sticky-top">
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-dark" id="navTop">
+                    <div class="container px-5">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <a class="navbar-brand" href="#!"><span id="logo">BVGB</span></a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link" href="#!">Mis gestiones</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#!">Atención al cliente</a></li>
+                                <!-- <li class="nav-item"><a class="nav-link navbar-brand" href=""><span>Salir</span></a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-dark" id="navBottom">
+                    <div class="container px-5">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Cuentas</a></li>
+                                <li class="nav-item"><a class="nav-link" href="./cards.html">Tarjetas</a></li>
+                                <li class="nav-item"><a class="nav-link" href="./transfers.html">Transferencias</a></li>
+                                <li class="nav-item"><a class="nav-link" href="./loan-application.html">Préstamos</a></li>
+                            </ul>
+                            <a v-on:click.prevent="logOut" class="text-light fw-normal fs-5" href="#">
+                                <span class="exit">Salir</span>
+                                <img class="exitImg" src="./assets/exit.png" alt="exit">
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Tarjeta -->
+        <!-- <div class="container px-4 px-lg-5"> -->
+        <div class="container px-lg-5">
+            <div class="row gx-4 gx-lg-5 my-5">
+                <h2>Hola, {{client.firstName}} {{client.lastName}}!</h2>
+                <div class="col-lg-8">
+                    <div class="card" v-for="account in accounts">
+                        <div class="card-body">
+                            <table class="card-table table">
+                                <thead>
+                                  <tr>
+                                      <th scope="col">N° Cuenta</th>
+                                      <th scope="col">Fecha</th>
+                                      <th scope="col">Balance</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>{{account.number}}</td>
+                                      <td>{{ moment(account.creationDate).format('DD/MM/YYYY')}}</td>
+                                      <td>{{account.balance}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <a v-bind:href="'./account.html?id=' + account.id" class="btn btn-dark">Movimientos</a>
+                        </div>
+                    </div>
+                    <div>
+                        <a v-on:click.prevent="newAccount" class="btn btn-dark" href="#!">Crear cuenta!</a>
+                    </div>
+                </div>
+                <!-- Acordeon -->
+                <div class="col-lg-4">
+                    <div class="accordion" id="accordionExample">
+                        <div class="item">
+                           <div class="item-header" id="headingOne">
+                              <h2 class="mb-0">
+                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Mi Perfil
+                                 <i class="fa fa-angle-down"></i>
+                                 </button>
+                              </h2>
+                           </div>
+                           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                              data-parent="#accordionExample">
+                              <div class="d-flex flex-column t-p" >
+                                  <a href="">Datos personales</a>
+                                  <a href="">Datos impositivos</a>
+                                  <a href="">Agenda de destinatarios</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-header" id="headingTwo">
+                              <h2 class="mb-0">
+                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Inversiones
+                                 <i class="fa fa-angle-down"></i>
+                                 </button>
+                              </h2>
+                           </div>
+                           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                              data-parent="#accordionExample">
+                              <div class="d-flex flex-column t-p" >
+                                <a href="">Datos personales</a>
+                                <a href="">Datos impositivos</a>
+                                <a href="">Agenda de destinatarios</a>
+                            </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-header" id="headingThree">
+                              <h2 class="mb-0">
+                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Pagos
+                                 <i class="fa fa-angle-down"></i>
+                                 </button>
+                              </h2>
+                           </div>
+                           <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                              data-parent="#accordionExample">
+                              <div class="d-flex flex-column t-p" >
+                                <a href="">Datos personales</a>
+                                <a href="">Datos impositivos</a>
+                                <a href="">Agenda de destinatarios</a>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Prestamos -->
+        <div class="container px-lg-5">
+            <div class="row gx-4 gx-lg-5 my-5">
+                <h2>Préstamos</h2>
+                <div class="col-lg-8">
+                    <div class="card" v-if="clientLoans.length > 0" v-for="loan in clientLoans">
+                        <div class="card-body">
+                            <table class="card-table table">
+                                <thead>
+                                  <tr>
+                                      <th scope="col">Tipo Credito</th>
+                                      <th scope="col">Monto a reintegrar</th>
+                                      <th scope="col">Cuotas</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>{{loan.nameLoan}}</td>
+                                      <td>${{loan.amount}}</td>
+                                      <td>{{loan.payments}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                    <div class="card" v-else>
+                        <div class="card-body">Usted no posee creditos!</div>
+                    </div>
+                    <div>
+                        <a class="btn btn-dark" href="./loan-application.html">Solicitar prestamo!</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/Banner_solicita_tu_ prestamo.png" alt="..." />
+                    <h3 class="font-weight-light">Pedí tu Préstamo Personal</h3>
+                    <p>Por ser cliente de nuestro Banco, ¡te damos beneficios únicos! Solicitá tu préstamo personal a tasa preferencial por un monto máximo de $2.000.000.</p>
+                    <a class="btn btn-dark" href="#!">Pedilo por Home Banking!</a>
+                </div>
+            </div>
+        </div>
+        <!-- Info Extra -->
+        <div>
+            <div class="container px-lg-5">
+                <div class="card text-white my-5 py-4 text-center" id="millasEx">
+                    <div class="card-body"><p class="text-white m-0">Sumate a nuestro nuevo programa de referidos, ganá Millas Extras por cada referido que se sume a nuestro Banco!</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-4" id="footer">
+        <p class="m-0 text-center text-white">Copyright &copy; BVGB 2021</p>
+    </footer>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
+    <script src="./scripts/accounts.js"></script>
+</body>
+</html>

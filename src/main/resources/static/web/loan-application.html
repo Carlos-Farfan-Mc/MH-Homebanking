@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/cash-coin.svg"/>
+    <link rel="stylesheet" href="./styles/create-cards.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'>
+    <title>Préstamos</title>
+</head>
+<body>
+    <div id="app">
+        <div class="header sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-dark" id="navTop">
+                <div class="container px-5">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="#!"><span id="logo">BVGB</span></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="#!">Mis gestiones</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Atención al cliente</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link navbar-brand" href=""><span>Salir</span></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark" id="navBottom">
+                <div class="container px-5">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="./accounts.html">Cuentas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./cards.html">Tarjetas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./transfers.html">Transferencias</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#!">Préstamos</a></li>
+                        </ul>
+                        <a v-on:click.prevent="logOut" class="text-light fw-normal fs-5" href="#">
+                            <span class="exit">Salir</span>
+                            <img class="exitImg" src="./assets/exit.png" alt="exit">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="bodyCard">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Solicitud de préstamo</h3>
+                        <p>Completá los datos</p>
+                        
+                        <form v-on:submit.prevent="requestLoan">
+                            <select v-on:change="loadPayments" v-model="loanId" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option disabled value="">Seleccione tipo de préstamo</option>
+                                <option v-for="loan in loans" v-bind:value="loan.id">{{loan.name}}: hasta ${{loan.maxAmount}} Tasa %{{loan.percentage}}</option>
+                            </select>
+
+                            <select v-on:change="calculateAmount" v-model="payment" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option disabled value="">Seleccione cantidad de cuotas</option>
+                                <option v-for="payment in payments">{{payment}}</option>
+                            </select>
+
+                            <input v-on:blur="calculateAmount" v-model="amount" type="text" placeholder="Monto solicitado:" required>
+
+                            <select v-model="accountNumber" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option disabled value="">Seleccione cuenta destino</option>
+                                <option v-for="account in accounts" v-bind:value="account.number">{{account.number}}</option>
+                            </select>
+                            
+                            <input v-model="paymentAmount" type="text" placeholder="Monto de cuotas:" readonly>
+
+                            <div class="d-flex justify-content-center align-items-center flex-column" style="height: 3rem;">
+                                <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Aceptar
+                                </button>
+                            </div>
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Transferencia</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Confirmar operación?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-dark">Aceptar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-4" id="footer">
+        <p class="m-0 text-center text-white">Copyright &copy; BVGB 2021</p></div>
+    </footer>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="./scripts/loan-application.js"></script>
+</body>
+</html>

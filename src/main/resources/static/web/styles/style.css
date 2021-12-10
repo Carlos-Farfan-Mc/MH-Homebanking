@@ -1,0 +1,118 @@
+html * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body {
+    background: #c77126;
+    /* background: #232323; */
+    margin: 0;
+    /* margin-bottom: 40px; */
+  }
+
+  #bodyCard {
+    background: #bbddddbe;
+    /* width: 80vw; */
+    height: 74vh;
+    /* border: solid white; */
+  }
+
+  #app{
+      background: #dfecfa;
+  }
+
+  #logo{
+      font-size: 1.5rem;
+  }
+
+  #navTop {
+      background: #122842;
+  }
+  #navBottom {
+    background: #043564;
+  }
+
+  .exit {
+    color: #07b9b9be;
+    margin-right: .3rem;
+  }
+
+  a.btn {
+    background: #07b9b9be;
+    border: none;
+  }
+
+  #millasEx {
+    background: #122842;
+  }
+
+  .accordion{
+    margin: 0px 0;
+    background: #084680;
+  }
+  .accordion .item {
+      border: none;
+      margin-bottom: 10px;
+      background: none;
+  }
+  .t-p a{
+    color:whitesmoke;
+    padding: .3rem 1.2rem;
+  }
+  .accordion .item .item-header h2 button.btn.btn-link {
+      background: #122842;
+      color: white;
+      border-radius: 0px;
+      font-family: 'Popins';
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 2.5;
+      text-decoration: none;
+  }
+  .accordion .item .item-header {
+      border-bottom: none;
+      background: transparent;
+      /* padding: 0px;
+      margin: 0px; */
+  }
+  
+  .accordion .item .item-header h2 button {
+      color: white;
+      font-size: 20px;
+      padding: .7rem;
+      display: block;
+      width: 100%;
+      text-align: left;
+  }
+  
+  .accordion .item .item-header h2 i {
+      float: right;
+      font-size: 30px;
+      color: #07b9b9be;
+      background-color: black;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+  }
+
+  img.exitImg {
+      width: 30px;
+  }
+  
+  button.btn.btn-link.collapsed i {
+      transform: rotate(0deg);
+  }
+  
+  button.btn.btn-link i {
+      transform: rotate(180deg);
+      transition: 0.5s;
+  }  
+#footer{
+    background:linear-gradient(to right, #150e53,#3d54bb);
+    height: 10vh;
+}
