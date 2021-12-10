@@ -87,13 +87,6 @@ public class HomebankingApplication {
 
 			Card cardSilver2 = new Card("Carlos Farfan", CardType.CREDIT, CardColor.SILVER, "6226622635533443", 999, LocalDateTime.now(), LocalDateTime.now().plusYears(5), clientCarlos);
 			cardRepository.save(cardSilver2);
-
-//			clientRepository.save(new Client("Melba", "Morel", "melba@mindhub.com"));
-//
-//			accountRepository.save(new Account("MIV001", LocalDateTime.now(), 5000d));
-//			accountRepository.save(new Account("MIV002", LocalDateTime.now().plusDays(1), 7500d));
-
-//			clientRepository.save(new Client("Carlos", "Farfan", "charly@mindhub.com"));
 		};
 	}
 }
